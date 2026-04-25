@@ -6,6 +6,7 @@ import { useAccount, useConnect } from "wagmi";
 import { injected } from "wagmi/connectors";
 import { keccak256, toBytes } from "viem";
 import { useMintINFT } from "@/hooks/useINFTRegistry";
+import { Providers } from "@/lib/providers";
 
 export const dynamic = "force-dynamic";
 
@@ -41,6 +42,14 @@ const DOMAINS = ["Phytochemistry", "Genomics", "Materials Science", "Environment
 const FORMATS = ["csv", "json", "tsv", "txt", "fasta", "h5"];
 
 export default function CreatorPage() {
+  return (
+    <Providers>
+      <CreatorPageContent />
+    </Providers>
+  );
+}
+
+function CreatorPageContent() {
   const { address, isConnected } = useAccount();
   const { connect } = useConnect();
   const { mint, isPending, isConfirming, isSuccess, txHash, error } = useMintINFT();

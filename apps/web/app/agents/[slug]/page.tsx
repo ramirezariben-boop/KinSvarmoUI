@@ -9,6 +9,7 @@ import { seededAgents } from "@kingsvarmo/shared";
 import { useCreateJob } from "@/hooks/useAnalysisEscrow";
 import { ogTestnet } from "@/lib/chain";
 import { formatUnits, parseEther } from "viem";
+import { Providers } from "@/lib/providers";
 
 export const dynamic = "force-dynamic";
 
@@ -73,6 +74,14 @@ function StepBar({ current }: { current: Step }) {
 
 export default function AgentRunPage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = use(params);
+  return (
+    <Providers>
+      <AgentRunPageContent slug={slug} />
+    </Providers>
+  );
+}
+
+function AgentRunPageContent({ slug }: { slug: string }) {
   const agent = seededAgents.find((a) => a.slug === slug);
   if (!agent) return notFound();
 

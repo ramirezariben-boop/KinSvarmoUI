@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 import "./styles.css";
-import { Providers } from "@/lib/providers";
 import { Nav } from "@/components/Nav";
 import { Footer } from "@/components/Footer";
 
@@ -24,13 +23,11 @@ export default function RootLayout({
         />
       </head>
       <body>
-        <Providers>
-          <div className="page">
-            <Nav />
-            <main style={{ flex: 1 }}>{children}</main>
-            <Footer />
-          </div>
-        </Providers>
+        <div className="page">
+          <Nav />
+          <main style={{ flex: 1 }}>{children}</main>
+          <Footer />
+        </div>
       </body>
     </html>
   );
