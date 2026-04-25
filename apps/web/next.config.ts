@@ -1,6 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: "export",
+  trailingSlash: true,
   transpilePackages: ["@kingsvarmo/shared"],
   serverExternalPackages: ["wagmi", "viem", "@wagmi/core", "@wagmi/connectors"],
   webpack: (config, { isServer }) => {

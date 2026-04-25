@@ -8,8 +8,6 @@ import { keccak256, toBytes } from "viem";
 import { useMintINFT } from "@/hooks/useINFTRegistry";
 import { Providers } from "@/lib/providers";
 
-export const dynamic = "force-dynamic";
-
 type Step = "basics" | "config" | "script" | "review";
 const STEP_ORDER: Step[] = ["basics", "config", "script", "review"];
 const STEP_LABELS: Record<Step, string> = {
